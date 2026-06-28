@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamed Shalaby — Self-Taught Developer</title>
+  <meta name="description" content="Mohamed Shalaby — a self-taught front-end developer building consistently every day with JavaScript and React." />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-soft: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #3fb950;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+
+    /* Hero */
+    .hero { text-align: center; padding: 96px 0 72px; border-bottom: 1px solid var(--border); }
+    .hero h1 { font-size: 2.6rem; letter-spacing: -0.5px; }
+    .hero .tag { color: var(--accent); font-size: 1.15rem; margin-top: 8px; font-style: italic; }
+    .hero p { color: var(--muted); max-width: 620px; margin: 20px auto 0; font-size: 1.05rem; }
+    .cta { margin-top: 32px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      border: 1px solid var(--border); color: var(--text); font-weight: 600; font-size: 0.95rem;
+      transition: all .15s ease;
+    }
+    .btn:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
+    .btn.primary { background: var(--accent-2); border-color: var(--accent-2); color: #04260f; }
+    .btn.primary:hover { color: #04260f; opacity: .9; }
+
+    h2 { font-size: 1.5rem; margin-bottom: 24px; }
+    h2 .hash { color: var(--accent-2); }
+
+    .about p { color: var(--muted); margin-bottom: 16px; max-width: 720px; }
+    .about strong { color: var(--text); }
+
+    /* Skills */
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      background: var(--bg-soft); border: 1px solid var(--border);
+      padding: 8px 14px; border-radius: 20px; font-size: 0.9rem; color: var(--text);
+    }
+
+    /* Projects */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .card {
+      background: var(--bg-soft); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px; transition: border-color .15s ease;
+    }
+    .card:hover { border-color: var(--accent); }
+    .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 14px; }
+    .card .meta { font-size: 0.8rem; color: var(--accent-2); margin-bottom: 10px; font-weight: 600; }
+    .card .links a { font-size: 0.9rem; margin-right: 14px; }
+
+    /* Contact */
+    .contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+    .contact-links a {
+      background: var(--bg-soft); border: 1px solid var(--border);
+      padding: 12px 18px; border-radius: 8px; color: var(--text); font-weight: 500;
+    }
+    .contact-links a:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
+
+    footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1>Mohamed Shalaby</h1>
+      <div class="tag">"Start easy, start small, and keep showing up."</div>
+      <p>I'm a self-taught front-end developer who builds something every single day with JavaScript and React. Turning daily consistency into real, working software.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View My Work</a>
+        <a class="btn" href="https://github.com/Shalabyelectronics" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="wrap">
+      <h2><span class="hash">#</span> About me</h2>
+      <p>I started from curiosity — taking things apart, figuring out how they work. My first steps into code were with Python a couple of years ago, but I found where I really wanted to build: the <strong>front end</strong>.</p>
+      <p>Today my focus is <strong>JavaScript and React</strong> — building responsive, interactive interfaces and working with APIs. I'm currently deepening my React skills through hands-on projects and a front-end bootcamp, on my way to becoming a strong front-end developer.</p>
+      <p>I believe <strong>consistency beats intensity</strong>. Small steps, repeated daily, compound into things you couldn't have built in a single sprint.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2><span class="hash">#</span> Tech I work with</h2>
+      <div class="skills">
+        <span class="chip">JavaScript</span>
+        <span class="chip">React</span>
+        <span class="chip">HTML5</span>
+        <span class="chip">CSS3</span>
+        <span class="chip">Responsive Design</span>
+        <span class="chip">Working with APIs</span>
+        <span class="chip">Git &amp; GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2><span class="hash">#</span> Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="meta">React · AI API</div>
+          <h3>Chef Claude</h3>
+          <p>A recipe generator that turns the ingredients you have on hand into a full recipe, powered by the Claude API. Built with React.</p>
+          <div class="links">
+            <a href="https://github.com/Shalabyelectronics/chef-claude" target="_blank" rel="noopener">Code →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="meta">Vanilla JavaScript</div>
+          <h3>20 JavaScript Projects</h3>
+          <p>A collection of vanilla-JS builds — no frameworks — covering DOM manipulation, events, and core JavaScript fundamentals.</p>
+          <div class="links">
+            <a href="https://github.com/Shalabyelectronics/20-JS-Vanilla-Projects" target="_blank" rel="noopener">Code →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="meta">JavaScript · API</div>
+          <h3>Country Info App</h3>
+          <p>An app that fetches and displays country data from a public API — practicing async requests, fetch, and rendering data to the DOM.</p>
+          <div class="links">
+            <a href="https://github.com/Shalabyelectronics/country-info-app" target="_blank" rel="noopener">Code →</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="meta">HTML · CSS · JavaScript</div>
+          <h3>Game Arena</h3>
+          <p>A collection of small interactive browser games built with HTML, CSS, and JavaScript — hands-on practice with logic and the DOM.</p>
+          <div class="links">
+            <a href="https://github.com/Shalabyelectronics/GameArena" target="_blank" rel="noopener">Code →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2><span class="hash">#</span> Let's connect</h2>
+      <div class="contact-links">
+        <a href="https://github.com/Shalabyelectronics" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/mhdshalaby/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/channel/UCMEh7C0J0LnFG0fHZcQ-y2Q" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:shalabycode@gmail.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Built by Mohamed Shalaby · shalabycode.dev</p>
+    </div>
+  </footer>
+
+</body>
+</html>
