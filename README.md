@@ -4,7 +4,7 @@
 
 **[Live Demo](https://shalabycode.dev/)** · **[Source](https://github.com/Shalabyelectronics/Shalabyelectronics.github.io)**
 
-![Personal Portfolio screenshot](docs/screenshot.png)
+![Projects section of shalabycode.dev](docs/screenshot.png)
 
 ## About
 
@@ -13,9 +13,12 @@ This repository contains the source code for Mohamed Shalaby's personal develope
 ## Features
 
 - **Developer dark theme**: Styled with dark GitHub-inspired colors using native CSS custom properties.
-- **Responsive project grid**: Displays project cards in a single column on mobile devices and expands to two columns on screens 640px and wider.
-- **Featured project showcase**: Highlights key repositories with descriptions, category metadata tags, and direct links to GitHub source code.
-- **Skills section**: Displays current front-end technologies as visual chips (HTML5, CSS3, JavaScript, React, APIs, and Git).
+- **Featured projects**: FreshCart and Social App get wide cards with the screenshot beside the description; they stack on small screens.
+- **Responsive project grid**: Four more projects in a two-column grid (one column under 680px), each with a screenshot, stack tags, and Live demo + Code buttons.
+- **More projects list**: Compact rows for smaller work, with an "In progress" label where a project isn't finished.
+- **Optimized screenshots**: 960×600 WebP thumbnails (about 190 KB for all six) with explicit sizes and lazy loading.
+- **Social previews**: Open Graph and Twitter Card tags with a 1200×630 preview image, plus an SVG favicon.
+- **Skills section**: Current front-end technologies as chips (JavaScript, TypeScript, React, Next.js, Redux Toolkit, Tailwind CSS, React Hook Form + Zod, and more).
 - **Contact hub**: Provides direct links to GitHub, LinkedIn, YouTube, and an email contact button.
 - **Native smooth scrolling**: Navigates directly from hero action buttons to the projects section.
 
@@ -51,13 +54,17 @@ To run this site locally, no build step or package manager is required:
 ```text
 Shalabyelectronics.github.io/
 ├── CNAME          # Custom domain configuration for GitHub Pages
+├── favicon.svg    # Site icon
+├── img/           # Project screenshots (WebP) and og.png social preview
+├── docs/          # README screenshot
 └── index.html     # Single-page markup, content, and inline stylesheet
 ```
 
 ## Roadmap
 
 - [ ] Extract inline styles into a separate, modular CSS stylesheet.
-- [ ] Add live preview links for each listed project card alongside the repository links.
+- [x] Add screenshots and live demo links to every project card.
+- [ ] Add a downloadable CV.
 - [ ] Implement a light and dark mode toggle using JavaScript and `localStorage`.
 - [ ] Add dynamic project filtering by technology tag.
 

@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohamed Shalaby — Self-Taught Developer</title>
-  <meta name="description" content="Mohamed Shalaby — a self-taught front-end developer building consistently every day with JavaScript and React." />
+  <title>Mohamed Shalaby — Front-End Developer</title>
+  <meta name="description" content="Mohamed Shalaby — a self-taught front-end developer building consistently every day with JavaScript, React, Next.js and TypeScript." />
+  <link rel="canonical" href="https://shalabycode.dev/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#0d1117" />
+
+  <!-- Social previews (LinkedIn, X, WhatsApp, Slack) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shalabycode.dev/" />
+  <meta property="og:title" content="Mohamed Shalaby — Front-End Developer" />
+  <meta property="og:description" content="React, Next.js and TypeScript projects with live demos: FreshCart, Social App, Wanderlust and more." />
+  <meta property="og:image" content="https://shalabycode.dev/img/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <style>
     :root {
       --bg: #0d1117;
@@ -14,6 +28,8 @@
       --muted: #8b949e;
       --accent: #58a6ff;
       --accent-2: #3fb950;
+      --warn: #d29922;
+      color-scheme: dark;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -25,7 +41,8 @@
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
     section { padding: 64px 0; border-bottom: 1px solid var(--border); }
 
     /* Hero */
@@ -42,9 +59,11 @@
     .btn:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
     .btn.primary { background: var(--accent-2); border-color: var(--accent-2); color: #04260f; }
     .btn.primary:hover { color: #04260f; opacity: .9; }
+    .btn.sm { padding: 7px 14px; font-size: 0.88rem; }
 
     h2 { font-size: 1.5rem; margin-bottom: 24px; }
     h2 .hash { color: var(--accent-2); }
+    .section-intro { color: var(--muted); margin: -12px 0 28px; max-width: 640px; }
 
     .about p { color: var(--muted); margin-bottom: 16px; max-width: 720px; }
     .about strong { color: var(--text); }
@@ -57,17 +76,48 @@
     }
 
     /* Projects */
-    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .projects { display: grid; gap: 20px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 680px) { .grid { grid-template-columns: 1fr 1fr; } }
     .card {
       background: var(--bg-soft); border: 1px solid var(--border);
-      border-radius: 12px; padding: 22px; transition: border-color .15s ease;
+      border-radius: 12px; overflow: hidden; transition: border-color .15s ease;
+      display: flex; flex-direction: column; min-width: 0;
     }
     .card:hover { border-color: var(--accent); }
-    .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 14px; }
-    .card .meta { font-size: 0.8rem; color: var(--accent-2); margin-bottom: 10px; font-weight: 600; }
-    .card .links a { font-size: 0.9rem; margin-right: 14px; }
+    .thumb { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .3s ease; }
+    .card:hover .thumb img { transform: scale(1.02); }
+    .card .body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 0; }
+    .card h3 { font-size: 1.2rem; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    .card .meta { font-size: 0.8rem; color: var(--accent-2); font-weight: 600; }
+    .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tags li { font-size: 0.75rem; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+    .card .links { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .card .note { font-size: 0.8rem; color: var(--muted); }
+
+    @media (min-width: 760px) {
+      .card.feature { flex-direction: row; }
+      .card.feature .thumb { flex: 0 0 54%; aspect-ratio: auto; min-height: 300px; border-bottom: 0; border-right: 1px solid var(--border); }
+      .card.feature .thumb img { object-position: left top; }
+      .card.feature .body { padding: 26px 28px; justify-content: center; }
+      .card.feature h3 { font-size: 1.45rem; }
+    }
+
+    /* More projects */
+    .more-title { font-size: 1.1rem; margin: 36px 0 14px; color: var(--text); }
+    .more { list-style: none; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .more li {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 20px;
+      padding: 14px 18px; background: var(--bg-soft); border-top: 1px solid var(--border);
+    }
+    .more li:first-child { border-top: 0; }
+    .more .what { flex: 1 1 380px; min-width: 0; }
+    .more strong { color: var(--text); }
+    .more span.desc { color: var(--muted); font-size: 0.92rem; }
+    .more .links { display: flex; gap: 14px; font-size: 0.9rem; }
+    .wip { font-size: 0.7rem; font-weight: 600; color: var(--warn); border: 1px solid var(--warn); border-radius: 999px; padding: 1px 8px; margin-left: 6px; vertical-align: 2px; }
 
     /* Contact */
     .contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
@@ -78,6 +128,17 @@
     .contact-links a:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
 
     footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 0 16px; }
+      .hero { padding: 72px 0 56px; }
+      .hero h1 { font-size: 2.1rem; }
+      .card .body { padding: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .thumb img, .btn, .card { transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -108,7 +169,12 @@
       <h2><span class="hash">#</span> Tech I work with</h2>
       <div class="skills">
         <span class="chip">JavaScript</span>
+        <span class="chip">TypeScript</span>
         <span class="chip">React</span>
+        <span class="chip">Next.js</span>
+        <span class="chip">Redux Toolkit</span>
+        <span class="chip">Tailwind CSS</span>
+        <span class="chip">React Hook Form + Zod</span>
         <span class="chip">HTML5</span>
         <span class="chip">CSS3</span>
         <span class="chip">Responsive Design</span>
@@ -121,40 +187,144 @@
   <section id="projects">
     <div class="wrap">
       <h2><span class="hash">#</span> Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="meta">React · AI API</div>
-          <h3>Chef Claude</h3>
-          <p>A recipe generator that turns the ingredients you have on hand into a full recipe, powered by the Claude API. Built with React.</p>
-          <div class="links">
-            <a href="https://github.com/Shalabyelectronics/chef-claude" target="_blank" rel="noopener">Code →</a>
+      <p class="section-intro">Every project below is live. Open the demo, then read the code.</p>
+
+      <div class="projects">
+        <article class="card feature">
+          <a class="thumb" href="https://freshcart-six-taupe.vercel.app" target="_blank" rel="noopener" aria-label="Open the FreshCart live demo">
+            <img src="img/freshcart.webp" alt="FreshCart home page with a grocery hero banner and category navigation" width="960" height="600" decoding="async" />
+          </a>
+          <div class="body">
+            <div class="meta">Next.js · TypeScript</div>
+            <h3>FreshCart</h3>
+            <p>E-commerce app with sign-up and login, a product catalog with categories, cart, wishlist, order history and product reviews. My graduation project for the Route Academy front-end program.</p>
+            <ul class="tags" aria-label="Built with">
+              <li>Redux Toolkit / RTK Query</li><li>NextAuth</li><li>Tailwind CSS</li><li>shadcn/ui</li><li>Zod</li>
+            </ul>
+            <div class="links">
+              <a class="btn primary sm" href="https://freshcart-six-taupe.vercel.app" target="_blank" rel="noopener">Live demo</a>
+              <a class="btn sm" href="https://github.com/Shalabyelectronics/freshcart" target="_blank" rel="noopener">Code</a>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="meta">Vanilla JavaScript</div>
-          <h3>20 JavaScript Projects</h3>
-          <p>A collection of vanilla-JS builds — no frameworks — covering DOM manipulation, events, and core JavaScript fundamentals.</p>
-          <div class="links">
-            <a href="https://github.com/Shalabyelectronics/20-JS-Vanilla-Projects" target="_blank" rel="noopener">Code →</a>
+        </article>
+
+        <article class="card feature">
+          <a class="thumb" href="https://socail-app-zeta.vercel.app" target="_blank" rel="noopener" aria-label="Open the Social App live demo">
+            <img src="img/social-app.webp" alt="Social App login screen with a city photo beside the sign-in form" width="960" height="600" loading="lazy" decoding="async" />
+          </a>
+          <div class="body">
+            <div class="meta">React 19 · Vite</div>
+            <h3>Social App</h3>
+            <p>Social network with protected routes, posts with privacy levels, comments and replies, likes, bookmarks, follow and profile pages.</p>
+            <ul class="tags" aria-label="Built with">
+              <li>React Router</li><li>React Hook Form + Zod</li><li>HeroUI</li><li>Tailwind CSS</li><li>Axios</li>
+            </ul>
+            <div class="links">
+              <a class="btn primary sm" href="https://socail-app-zeta.vercel.app" target="_blank" rel="noopener">Live demo</a>
+              <a class="btn sm" href="https://github.com/Shalabyelectronics/Socail-App" target="_blank" rel="noopener">Code</a>
+              <span class="note">Free sign-up required</span>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="meta">JavaScript · API</div>
-          <h3>Country Info App</h3>
-          <p>An app that fetches and displays country data from a public API — practicing async requests, fetch, and rendering data to the DOM.</p>
-          <div class="links">
-            <a href="https://github.com/Shalabyelectronics/country-info-app" target="_blank" rel="noopener">Code →</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="meta">HTML · CSS · JavaScript</div>
-          <h3>Game Arena</h3>
-          <p>A collection of small interactive browser games built with HTML, CSS, and JavaScript — hands-on practice with logic and the DOM.</p>
-          <div class="links">
-            <a href="https://github.com/Shalabyelectronics/GameArena" target="_blank" rel="noopener">Code →</a>
-          </div>
+        </article>
+
+        <div class="grid">
+          <article class="card">
+            <a class="thumb" href="https://shalabycode.dev/js_Quize/" target="_blank" rel="noopener" aria-label="Open the Wanderlust live demo">
+              <img src="img/wanderlust.webp" alt="Wanderlust dashboard with destination picker and travel stats" width="960" height="600" loading="lazy" decoding="async" />
+            </a>
+            <div class="body">
+              <div class="meta">Vanilla JavaScript · 6 APIs</div>
+              <h3>Wanderlust</h3>
+              <p>Travel-planning dashboard that combines country facts, weather, public holidays, events, exchange rates and sunrise times, with plans saved in the browser.</p>
+              <ul class="tags" aria-label="Built with">
+                <li>Fetch API</li><li>async/await</li><li>localStorage</li><li>CSS Grid</li>
+              </ul>
+              <div class="links">
+                <a class="btn primary sm" href="https://shalabycode.dev/js_Quize/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn sm" href="https://github.com/Shalabyelectronics/js_Quize" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="https://shalabycode.dev/What-s-For-Dinner/" target="_blank" rel="noopener" aria-label="Open the What's For Dinner live demo">
+              <img src="img/whats-for-dinner.webp" alt="What's For Dinner showing a barbecue ribs recipe with ingredient tabs" width="960" height="600" loading="lazy" decoding="async" />
+            </a>
+            <div class="body">
+              <div class="meta">JavaScript · Bootstrap 5</div>
+              <h3>What's For Dinner</h3>
+              <p>Recipe inspiration app with tabbed ingredients, instructions, nutrition and chef tips, difficulty badges and link previews for sharing.</p>
+              <ul class="tags" aria-label="Built with">
+                <li>DOM rendering</li><li>Bootstrap 5</li><li>CSS clamp()</li><li>Open Graph</li>
+              </ul>
+              <div class="links">
+                <a class="btn primary sm" href="https://shalabycode.dev/What-s-For-Dinner/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn sm" href="https://github.com/Shalabyelectronics/What-s-For-Dinner" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="https://shalabycode.dev/pdf-page-planner/" target="_blank" rel="noopener" aria-label="Open the PDF Page Planner live demo">
+              <img src="img/pdf-page-planner.webp" alt="PDF Page Planner in Arabic, with page thumbnails marked important, less important or delete" width="960" height="600" loading="lazy" decoding="async" />
+            </a>
+            <div class="body">
+              <div class="meta">JavaScript · PDF.js · Arabic RTL</div>
+              <h3>PDF Page Planner</h3>
+              <p>A real tool for a PDF compression service: preview pages in the browser, mark each one as important, less important or delete, and send the order on WhatsApp. Pages render in the browser with no server upload.</p>
+              <ul class="tags" aria-label="Built with">
+                <li>PDF.js</li><li>Web Crypto API</li><li>IntersectionObserver</li><li>RTL</li>
+              </ul>
+              <div class="links">
+                <a class="btn primary sm" href="https://shalabycode.dev/pdf-page-planner/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn sm" href="https://github.com/Shalabyelectronics/pdf-page-planner" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="https://shalabycode.dev/contuctHubApp/" target="_blank" rel="noopener" aria-label="Open the ContactHub live demo">
+              <img src="img/contact-hub.webp" alt="ContactHub dashboard with contact totals, search and favorites panels" width="960" height="600" loading="lazy" decoding="async" />
+            </a>
+            <div class="body">
+              <div class="meta">JavaScript · Bootstrap 5</div>
+              <h3>ContactHub</h3>
+              <p>Contact manager with add, edit and delete, regex validation, duplicate-number detection, favorites and emergency lists, and live search.</p>
+              <ul class="tags" aria-label="Built with">
+                <li>CRUD</li><li>Regex validation</li><li>localStorage</li>
+              </ul>
+              <div class="links">
+                <a class="btn primary sm" href="https://shalabycode.dev/contuctHubApp/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn sm" href="https://github.com/Shalabyelectronics/contuctHubApp" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+
+      <h3 class="more-title">More projects</h3>
+      <ul class="more">
+        <li>
+          <div class="what"><strong>Game Arena</strong> — <span class="desc">responsive eSports landing page with a custom dark design. HTML, CSS, Bootstrap 5.</span></div>
+          <div class="links"><a href="https://shalabycode.dev/GameArena/" target="_blank" rel="noopener">Live</a><a href="https://github.com/Shalabyelectronics/GameArena" target="_blank" rel="noopener">Code</a></div>
+        </li>
+        <li>
+          <div class="what"><strong>Kanban Board</strong> — <span class="desc">drag-and-drop task board with editing and localStorage. Vanilla JavaScript.</span></div>
+          <div class="links"><a href="https://shalabycode.dev/kanban-board/" target="_blank" rel="noopener">Live</a><a href="https://github.com/Shalabyelectronics/kanban-board" target="_blank" rel="noopener">Code</a></div>
+        </li>
+        <li>
+          <div class="what"><strong>Country Info App</strong> — <span class="desc">search any country for its capital, population, region and flag with the REST Countries API.</span></div>
+          <div class="links"><a href="https://shalabycode.dev/country-info-app/" target="_blank" rel="noopener">Live</a><a href="https://github.com/Shalabyelectronics/country-info-app" target="_blank" rel="noopener">Code</a></div>
+        </li>
+        <li>
+          <div class="what"><strong>Vanilla JS mini-projects</strong> — <span class="desc">5 builds so far: form validator, movie seat booking, custom video player, exchange rates and array methods.</span></div>
+          <div class="links"><a href="https://shalabycode.dev/20-JS-Vanilla-Projects/" target="_blank" rel="noopener">Live</a><a href="https://github.com/Shalabyelectronics/20-JS-Vanilla-Projects" target="_blank" rel="noopener">Code</a></div>
+        </li>
+        <li>
+          <div class="what"><strong>Chef Claude</strong><span class="wip">In progress</span> — <span class="desc">React app that will turn the ingredients you have into a recipe using the Claude API.</span></div>
+          <div class="links"><a href="https://github.com/Shalabyelectronics/chef-claude" target="_blank" rel="noopener">Code</a></div>
+        </li>
+      </ul>
     </div>
   </section>
 
